@@ -69,3 +69,7 @@ All of the config options are optional.  You can also pass in a hash instead of 
 Copyright (c) 2009 Jeremy Stephens. See LICENSE for details.
 
 Many snippets were taken from ZenTest[http://github.com/seattlerb/ZenTest].
+
+== Contributors
+
+* Adam Grant (harmon)
