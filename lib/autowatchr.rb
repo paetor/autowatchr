@@ -1,4 +1,5 @@
 require 'erb'
+require 'stringio'
 
 class Autowatchr
   class Config
