@@ -95,6 +95,7 @@ class Autowatchr
   end
 
   attr_reader :config
+  attr_accessor :interrupt_received
 
   def initialize(script, options = {})
     @config = Config.new(options)
@@ -106,6 +107,25 @@ class Autowatchr
     discover_files
     run_all_tests
     start_watching_files
+    start_sigint_handler
+  end
+
+  # Traps any INT signals (like Control-C) and re-runs all
+  # the tests, unless the user sends the INT signal again within
+  # 2 seconds.
+  def start_sigint_handler
+    Signal.trap 'INT' do
+      if self.interrupt_received
+        exit 0
+      else
+        self.interrupt_received = true
+        puts "\nInterrupt a second time to quit"
+        Kernel.sleep 2
+        self.interrupt_received = false
+        puts "Running all tests..."
+        run_all_tests
+      end
+    end
   end
 
   def run_lib_file(file)
