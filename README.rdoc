@@ -11,12 +11,12 @@ Provides some autotest-like behavior for watchr (http://github.com/mynyml/watchr
 * Auto-watches test and lib files using the autotest layout
 * Optionally run only failing-tests
 * Optionally run entire suite after all tests pass
+* Traps INT signal (Control-C) and re-runs all tests.
 
 == Todo
 
 * Cucumber support
 * Expose algorithm to map test classes to test files
-* Add INT signal trapping
 
 == Example use
 
