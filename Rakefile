@@ -24,6 +24,7 @@ Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
   test.pattern = 'test/test_*.rb'
   test.verbose = true
+  test.ruby_opts = %w{-rubygems}
 end
 
 begin
