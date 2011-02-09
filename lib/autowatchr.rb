@@ -4,7 +4,7 @@ require 'stringio'
 class Autowatchr
   class Config
     attr_writer :command, :ruby, :include, :require, :lib_dir, :test_dir,
-      :lib_re, :test_re, :test_file, :failed_results_re, :completed_re, 
+      :lib_re, :test_re, :test_file, :failed_results_re, :completed_re,
       :failing_only, :run_suite
 
     def initialize(options = {})
@@ -27,7 +27,7 @@ class Autowatchr
     end
 
     def include
-      @include ||= ".:#{self.lib_dir}:#{self.test_dir}"
+      @include ||= ['.', lib_dir, test_dir].join(File::PATH_SEPARATOR)
     end
 
     def require
@@ -53,11 +53,11 @@ class Autowatchr
     end
 
     def lib_re
-      @lib_re ||= '^%s.*/.*\.rb$' % self.lib_dir
+      @lib_re ||= '^%s.*/.*\.rb$' % lib_dir
     end
 
     def test_re
-      @test_re ||= '^%s.*/test_.*\.rb$' % self.test_dir
+      @test_re ||= '^%s.*/test_.*\.rb$' % test_dir
     end
     
     def test_file
@@ -81,7 +81,7 @@ class Autowatchr
     end
 
     def eval_command(predicate)
-      ERB.new(self.command).result(binding)
+      ERB.new(command).result(binding)
     end
   end
 
@@ -119,7 +119,7 @@ class Autowatchr
   # 2 seconds.
   def start_sigint_handler
     Signal.trap 'INT' do
-      if self.interrupt_received
+      if interrupt_received
         exit 0
       else
         self.interrupt_received = true
