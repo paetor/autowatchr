@@ -20,7 +20,9 @@ Provides some autotest-like behavior for watchr (http://github.com/mynyml/watchr
 
 == Example use
 
-test.watchr
+Create a <tt>.watchr</tt> file for your project and simply declare an Autowatchr block within it:
+
+  # test/test.watchr
   require 'autowatchr'
 
   Autowatchr.new(self) do |config|
@@ -29,6 +31,9 @@ test.watchr
     config.test_dir = 'leet_test'
   end
 
+Your tests can then be run with:
+    $ watchr test/test.watchr
+    
 === Configuration options
 * command
   * An ERB template for the command
@@ -53,8 +58,11 @@ test.watchr
   * The regexp to use for discovering library files
   * Default: <tt>'^%s.*/.*\.rb$' % self.lib_dir</tt>
 * test_re
-  * The regexp to use for discovering library files
+  * The regexp to use for discovering test files
   * Default: <tt>'^%s.*/test_.*\.rb$' % self.test_dir</tt>
+* test_file
+  * The filename pattern for correlating test files with lib files.  The %s will be substituted for the basename of the lib file.
+  * Default: <tt>'test_%s.rb'</tt>
 * failing_only
   * Run only failing tests the next time a test file is run
   * Default: <tt>true</tt>
@@ -63,6 +71,25 @@ test.watchr
   * Default: <tt>true</tt>
 
 All of the config options are optional.  You can also pass in a hash instead of a block. Also see: test.watchr[http://github.com/viking/autowatchr/blob/master/test.watchr].
+
+== Using with RSpec
+
+Autowatchr can easily be configured to work with the standard RSpec file hierarchy:
+
+    # spec/spec.watchr
+    require 'autowatchr'
+    
+    Autowatchr.new(self) do |config|
+      config.test_dir = 'spec'
+      config.test_re = "^#{config.test_dir}/(.*)_spec\.rb$"
+      config.test_file = '%s_spec.rb'
+    end
+
+Be sure you have <tt>spec_helper.rb</tt> required in every spec file, or else put it in your <tt>.watchr</tt> file.
+
+== Prettier Results
+
+Autowatchr is compatible with the Watchr redgreen gem.  Install 'mynyml-redgreen' and simply require it in your <tt>.watchr</tt> file.
 
 == Copyright
 
