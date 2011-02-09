@@ -11,12 +11,12 @@ Provides some autotest-like behavior for watchr (http://github.com/mynyml/watchr
 * Auto-watches test and lib files using the autotest layout
 * Optionally run only failing-tests
 * Optionally run entire suite after all tests pass
+* Traps INT signal (Control-C) and re-runs all tests.
 
 == Todo
 
 * Cucumber support
 * Expose algorithm to map test classes to test files
-* Add INT signal trapping
 
 == Example use
 
@@ -96,3 +96,7 @@ Autowatchr is compatible with the Watchr redgreen gem.  Install 'mynyml-redgreen
 Copyright (c) 2009 Jeremy Stephens. See LICENSE for details.
 
 Many snippets were taken from ZenTest[http://github.com/seattlerb/ZenTest].
+
+== Contributors
+
+* Adam Grant (harmon)
