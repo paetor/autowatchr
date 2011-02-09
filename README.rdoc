@@ -93,7 +93,7 @@ Autowatchr is compatible with the Watchr redgreen gem.  Install 'mynyml-redgreen
 
 == Copyright
 
-Copyright (c) 2009 Jeremy Stephens. See LICENSE for details.
+Copyright (c) 2011 Jeremy Stephens. See LICENSE for details.
 
 Many snippets were taken from ZenTest[http://github.com/seattlerb/ZenTest].
 
