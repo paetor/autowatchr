@@ -99,4 +99,5 @@ Many snippets were taken from ZenTest[http://github.com/seattlerb/ZenTest].
 
 == Contributors
 
+* Stephen Eley (SFEley)
 * Adam Grant (harmon)
