@@ -4,7 +4,7 @@ Provides some autotest-like behavior for watchr (http://github.com/mynyml/watchr
 
 == Installation
 
-  gem install autowatchr --source http://gemcutter.org
+  gem install autowatchr
 
 == Current features
 
