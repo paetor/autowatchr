@@ -109,7 +109,7 @@ class Autowatchr
     @failed_tests = {}
 
     discover_files
-    run_all_tests
+    run_all_tests unless @config.run_suite
     start_watching_files
     start_sigint_handler
   end
